@@ -4,22 +4,11 @@ variable "region" {
  default = "ap-south-1"
 }
 
-variable "access_key" {
-    type     = string
-    description = "Define Access Key" 
-    default = "AKIAREZ3IG4O3LUIUPPD" 
-}
-
-variable "secret_key" {
-  type       = string
-  description = "Define Secret Key"
-  default = "KEwaFt+jTEJwz5Ho+b+wqimmg6rZBUHoCTyTT98t"
-}
 
 variable "instance_ami" {
   type        = string
   description = "AMI ID for the EC2 instance"
-  default     = "ami-074dc0a6f6c764218"
+  default     = "ami-0376ec8eacdf70aae"
 }
 
 variable "instance_type" {
