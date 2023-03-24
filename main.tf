@@ -1,8 +1,3 @@
-provider "aws" {
-    region = "ap-south-1"
-}
-
-
 terraform {
   required_providers {
     aws = {
@@ -12,12 +7,11 @@ terraform {
   }
 }
 
-# Connect with aws account using secret_key and access_id 
+#connect a region
 provider "aws" {
-   region = var.region
-   access_key = var.access_key
-   secret_key = var.secret_key
+    region = "ap-south-1"
 }
+
 
 # Genrate Aws key pair 
 resource "tls_private_key" "example" {
@@ -118,18 +112,6 @@ resource "aws_instance" "ins1" {
   associate_public_ip_address = "true"
   vpc_security_group_ids = [ aws_security_group.surksha.id ]
   subnet_id = aws_subnet.subnet1.id
-/*
-#  user_data = <<EOF
-#  #!/bin/bash 
-#yum install httpd -y 
-##echo "Running script based web" >> /var/www/html/index.html
-#systemctl start httpd 
-#systemctl enable httpd 
-##echo "#!/bin/bash" >> /tmp/file.sh
-#echo "logger -p "Hello how are you"  >> /tmp/file.sh   
-#EOF
-#
-*/
 
 provisioner "local-exec" {
     command = "echo $FOO $BAR $BAZ >> env_vars.txt"
@@ -137,8 +119,6 @@ provisioner "local-exec" {
       FOO = "bar"
       BAR = 1
       BAZ = "true"
-}
-}
 }
 
 # output collect key 
