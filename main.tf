@@ -129,8 +129,10 @@ output "private_key" {
   sensitive = true
 }
 
-# output account id 
-output "ac_id" {
-  value = data.aws_caller_identity.current.account_id
+data "external" "myipaddr" {
+  program = ["bash", "-c", "curl -s 'https://ipinfo.io/json'"]
 }
 
+output "my_public_ip" {
+  value = "${data.external.myipaddr.result.ip}"
+}
