@@ -113,11 +113,24 @@ resource "aws_instance" "ins1" {
   vpc_security_group_ids = [ aws_security_group.surksha.id ]
   subnet_id = aws_subnet.subnet1.id
 
-
 }
+
+user_data = <<EOF
+#!/bin/bash
+sudo sudo snap install --classic code
+sudo apt install software-properties-common apt-transport-https wget
+wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add -
+sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" -y
+sudo apt install code -y       
+sudo apt update
+sudo apt upgrade -y
+EOF
+
+
 
 # output collect key 
 output "private_key" {
   value   = tls_private_key.example.private_key_pem
   sensitive = true
 }
+
