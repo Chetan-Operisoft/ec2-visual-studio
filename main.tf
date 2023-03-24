@@ -113,12 +113,7 @@ resource "aws_instance" "ins1" {
   vpc_security_group_ids = [ aws_security_group.surksha.id ]
   subnet_id = aws_subnet.subnet1.id
 
-provisioner "local-exec" {
-    command = "echo $FOO $BAR $BAZ >> env_vars.txt"
-    environment = {
-      FOO = "bar"
-      BAR = 1
-      BAZ = "true"
+
 }
 
 # output collect key 
