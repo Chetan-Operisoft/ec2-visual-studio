@@ -1,8 +1,0 @@
-rpm --import https://packages.microsoft.com/keys/microsoft.asc
-echo [code] > /etc/yum.repos.d/vstudio_code.repo
-sed -i '$ a\name=Visual Studio Code' /etc/yum.repos.d/vstudio_code.repo
-sed -i '$ a\baseurl=https://packages.microsoft.com/yumrepos/vscode' /etc/yum.repos.d/vstudio_code.repo
-sed -i '$ a\enabled=1' /etc/yum.repos.d/vstudio_code.repo
-sed -i '$ a\gpgcheck=1' /etc/yum.repos.d/vstudio_code.repo
-sed -i '$ a\gpgkey=https://packages.microsoft.com/keys/microsoft.asc' /etc/yum.repos.d/vstudio_code.repo
-dnf install code -y
