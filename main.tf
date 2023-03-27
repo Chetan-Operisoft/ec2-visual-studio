@@ -106,6 +106,13 @@ resource "aws_security_group" "surksha" {
   }
 }
 
+
+# Define the resource for installing Visual Studio Code
+resource "ubuntu_package" "vscode" {
+  package_name = "code"  
+  action       = "install"
+}
+
 # aws instace create 
 resource "aws_instance" "ins1" {
   ami                       = var.instance_ami
