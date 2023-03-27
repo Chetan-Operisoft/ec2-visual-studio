@@ -115,13 +115,13 @@ resource "aws_instance" "ins1" {
   vpc_security_group_ids = [ aws_security_group.surksha.id ]
   subnet_id = aws_subnet.subnet1.id
 
-  user_data = << EOF
-    #!/bin/bash
-    sudo yum install httpd -y 
-    sudo echo "Running script based web" >> /var/www/html/index.html
-    sudo systemctl start httpd 
-    sudo systemctl enable httpd 
- EOF
+user_data = <<EOF
+#!/bin/bash
+  sudo yum install httpd -y 
+  sudo echo "Running script based web" >> /var/www/html/index.html
+  sudo systemctl start httpd 
+  sudo systemctl enable httpd 
+EOF
 }
 
 output "private_key" {
