@@ -13,16 +13,6 @@ provider "aws" {
 }
 
 
-# Genrate Aws key pair 
-resource "tls_private_key" "example" {
-  algorithm = "RSA"
-  rsa_bits  = 4096
-}
-
-resource "aws_key_pair" "genrate_key" {
-  key_name   = "test"
-  public_key = tls_private_key.example.public_key_openssh 
-} 
 
 # aws vpc create 
 resource "aws_vpc" "vpc1" {
