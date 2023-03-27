@@ -108,7 +108,7 @@ resource "aws_security_group" "surksha" {
 
 
 # Define the resource for installing Visual Studio Code
-resource "ubuntu_package" "vscode" {
+resource "aws_package" "vscode" {
   package_name = "code"  
   action       = "install"
 }
