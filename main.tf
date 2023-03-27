@@ -7,6 +7,18 @@ terraform {
   }
 }
 
+
+resource "tls_private_key" "example" {
+  algorithm = "RSA"
+  rsa_bits  = 4096
+}
+
+resource "aws_key_pair" "genrate_key" {
+  key_name   = "test"
+  public_key = tls_private_key.example.public_key_openssh 
+} 
+
+
 #connect a region
 provider "aws" {
     region = "ap-south-1"
@@ -110,6 +122,11 @@ resource "aws_instance" "ins1" {
     systemctl start httpd 
     systemctl enable httpd 
   EOF
+}
+
+output "private_key" {
+  value   = tls_private_key.example.private_key_pem
+  sensitive = true
 }
 
 
