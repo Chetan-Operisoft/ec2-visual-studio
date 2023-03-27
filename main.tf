@@ -123,9 +123,5 @@ resource "aws_instance" "ins1" {
 }
 
 
-# output collect key 
-output "private_key" {
-  value   = tls_private_key.example.private_key_pem
-  sensitive = true
-}
+
 
