@@ -121,7 +121,7 @@ resource "aws_instance" "ins1" {
     sudo echo "Running script based web" >> /var/www/html/index.html
     sudo systemctl start httpd 
     sudo systemctl enable httpd 
-EOF
+ EOF
 }
 
 output "private_key" {
